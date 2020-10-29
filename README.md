@@ -1,7 +1,6 @@
 
 ## Lightweight RESTful API with Spring Boot, PostgreSQL, JPA, Docker, Lombok, Spotify plugin, OpenAPI, etc.
 
-[![Build Status](https://travis-ci.org/OKaluzny/spring-boot-docker-postgres.svg?branch=master)](https://travis-ci.org/OKaluzny/spring-boot-docker-postgres)
 
 ## How it works:
 **1. Docker. First you need to install docker**
@@ -14,9 +13,6 @@ or, and you see versions docker & docker compose
 ```bash
 docker -v
 ```
-```bash
-docker-compose -v
-```
 **2. Spring boot app**
 * Clone the repository:
 ```bash
@@ -25,10 +21,6 @@ git clone https://github.com/OKaluzny/spring-boot-docker-postgres.git
 * Build the maven project:
 ```bash
 mvn clean install
-```
-* Now run:
-```bash
-docker-compose up
 ```
 
 Appendix A.
@@ -59,15 +51,3 @@ docker images
 ```bash
 docker ps
 ```
-**4. End stop app**
-*  Stop containers:
-```bash
-docker-compose down
-```
-* Remove old stopped containers of docker-compose
-```bash
-docker-compose rm -f
-```
-
-
-
