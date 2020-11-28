@@ -4,7 +4,6 @@
 **/*.class
 *.md
 
-**/target
 **/build
 **/bin
 *.text
