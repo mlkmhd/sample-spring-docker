@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp
+  namespace: default
+  labels:
+    app: myapp
+spec:
+  containers:
+    - name: app
+      image: novinrepo:8082/docker/sample-spring-docker:latest
+      ports:
+        - name: app
+          containerPort: 8080
+          protocol: TCP

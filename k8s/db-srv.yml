@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: db
+  namespace: default
+spec:
+  selector:
+    app: pg-db
+  type: ClusterIP
+  ports:
+    - protocol: TCP
+      port: 5432
+      name: db-port
+      targetPort: db
