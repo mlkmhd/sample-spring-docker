@@ -1,0 +1,3 @@
+dependencies:
+- name: postgresql
+  version: 8.6.4
