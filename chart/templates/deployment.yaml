@@ -24,6 +24,15 @@ spec:
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+      volumes:
+      - configMap:
+          defaultMode: 511
+          items:
+          - key: application.yml
+            path: application.yml
+          name: sample-spring-boot-docker-cfg
+          optional: false
+        name: vol1
       serviceAccountName: {{ include "sample-spring-docker.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
@@ -33,12 +42,16 @@ spec:
             {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          volumeMounts:
+          - mountPath: /app/application.yml
+            name: vol1
+            subPath: application.yml
           ports:
             - name: http
               containerPort: 8080
               protocol: TCP
           resources:
-            {{- toYaml .Values.resources | nindent 12 }}
+          {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

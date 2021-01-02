@@ -37,7 +37,7 @@ securityContext: {}
   # runAsUser: 1000
 
 service:
-  type: ClusterIP
+  type: NodePort
   port: 8080
 
 ingress:
@@ -78,7 +78,21 @@ tolerations: []
 
 affinity: {}
 
+db:
+  hostname: db-standalone
+  #hostname: db-replicated-pgpool
+  port: 5432
+  databasename: automobiles
+  username: postgres
+  password: "123"
+
 postgresql:
-  fullnameOverride: db
+  fullnameOverride: db-standalone
   postgresqlPassword: "123"
   postgresqlDatabase: "automobiles"
+  
+postgresql-ha:
+  fullnameOverride: db-replicated
+  postgresql:
+    database: "automobiles"
+    password: "123"
